@@ -1,0 +1,8 @@
+code: CA-QC
+name: {en: Québec, fr: Québec}
+rows:
+  - id: DIA-030
+    text: {en: "The common interoperability framework retains SVG 1.1 Second Edition for images. It also retains the raster formats PNG, GIF and JPEG, and sets no format for architecture or process diagrams. The framework is a recommended practice that project reviews take into account.", fr: "Le cadre commun d’interopérabilité retient SVG 1.1, deuxième édition, pour les images. Il retient aussi les formats matriciels PNG, GIF et JPEG, et ne fixe aucun format pour les diagrammes d’architecture ou de processus. Le cadre est une pratique recommandée dont l’analyse des projets tient compte."}
+    status: looser
+    source: {title: "Cadre commun d'interopérabilité du gouvernement du Québec, section 3.3.1 Formats", version: "Architecture d'entreprise gouvernementale 3.3", date: "2017-06", url: "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/cybersecurite_numerique/Publications/AEG/Cadre_commun_interoperabilite.pdf", archive: "https://web.archive.org/web/20240924132115/https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/cybersecurite_numerique/Publications/AEG/Cadre_commun_interoperabilite.pdf"}
+    last_checked: "2026-11-05"

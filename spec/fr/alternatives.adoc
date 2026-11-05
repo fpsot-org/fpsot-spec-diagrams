@@ -1,0 +1,82 @@
+= Textes de remplacement et couleur
+include::_fpsot-terms.adoc[]
+
+La spécification sur l'accessibilité de la {abbr-fpsot-first} exige un texte de remplacement pour chaque image.
+L'exigence DOC-030 l'applique aux diagrammes.
+La spécification sur l'accessibilité fixe aussi l'emploi de la couleur et les valeurs de contraste.
+Ces règles ne reprennent pas ces règles.
+Elles indiquent le contenu d'un bon texte de remplacement de diagramme.
+Elles indiquent aussi comment un diagramme respecte les règles sur la couleur.
+
+== Textes de remplacement
+
+[[DIA-020]]
+*DIA-020.* Chaque diagramme inséré DOIT avoir un texte de remplacement court dans sa macro d'image.
+Ce texte DOIT nommer le type de diagramme et son sujet, puis donner son idée principale en une phrase.
+Le texte « Diagramme de contexte du registre : le personnel y inscrit les biens » en est un exemple.
+Il NE DOIT PAS répéter le nom du fichier ni commencer par « Image de ».
+Un lecteur d'écran annonce d'abord l'image, et le texte court indique s'il vaut la peine de poursuivre.
+
+[[DIA-021]]
+*DIA-021.* Chaque diagramme DOIT aussi avoir une description longue dans le texte de sa page, juste après l'image.
+La description longue DOIT donner les mêmes faits que le diagramme, et aucun fait absent du diagramme.
+Elle DOIT nommer chaque élément, chaque relation avec son sens et son libellé, et chaque groupe ou frontière.
+Elle DOIT suivre l'ordre de lecture de sa notation, comme le montre le tableau ci-dessous.
+Un diagramme que le texte juste avant décrit déjà en entier PEUT renvoyer à ce texte.
+Le link:https://www.w3.org/WAI/tutorials/images/complex/[tutoriel du W3C sur les images complexes] conseille la même division entre un texte court et un texte long.
+
+Le tableau ci-dessous donne l'ordre pour le modèle C4, le {abbr-uml-first} et le {abbr-bpmn-first}.
+
+[cols="1,3",options="header"]
+|===
+|Notation |Description longue
+|Vue C4 |Une liste des éléments, groupés par frontière, chacun avec son type, sa technologie et sa description, puis une liste des relations, comme « Registre vers fournisseur d'identité : vérifie la connexion avec, OpenID Connect ».
+|Diagramme de classes {abbr-uml} |Un tableau des classes, avec leurs attributs, puis une liste des associations avec leur multiplicité.
+|Diagramme de séquence {abbr-uml} |Une liste numérotée des messages, dans l'ordre du temps, chacun avec son expéditeur et son destinataire.
+|Machine à états {abbr-uml} |Un tableau d'une ligne par transition : l'état, l'événement, la condition et l'état suivant.
+|Processus {abbr-bpmn} |Une liste numérotée des étapes, chacune avec son couloir. Chaque passerelle devient une question, avec une sous-liste pour chaque réponse.
+|Modèle de données généré |Un tableau des classes et de leurs champs, puis une liste des liens avec leur multiplicité.
+|===
+
+[[DIA-022]]
+*DIA-022.* Les textes de remplacement d'un diagramme DOIVENT changer dans le même {term-commit} que sa source.
+La révision d'un changement de diagramme DOIT comparer les deux textes à la nouvelle image.
+Un texte qui décrit un ancien diagramme induit en erreur les personnes qui s'y fient.
+
+== Couleur et contraste
+
+[[DIA-023]]
+*DIA-023.* Un diagramme NE DOIT PAS employer la couleur comme seul moyen de montrer un sens.
+Un libellé, une forme, un style de trait ou une entrée de légende DOIT aussi montrer chaque sens d'une couleur.
+Les systèmes externes, par exemple, portent le mot « externe » en plus d'un fond gris.
+La spécification sur l'accessibilité fixe cette règle pour tout contenu.
+Les link:https://c4model.com/diagrams/notation[consignes de notation du modèle C4] donnent le même conseil.
+Un diagramme DEVRAIT rester lisible une fois imprimé en tons de gris.
+
+[[DIA-024]]
+*DIA-024.* Texte, traits et formes d'un diagramme DOIVENT respecter les valeurs de contraste de la spécification sur l'accessibilité.
+Une source DEVRAIT employer `skinparam monochrome true`, qui dessine en noir, en blanc et en gris.
+Avec d'autres couleurs, chaque paire de couleurs de texte et de fond DOIT être vérifiée avec un outil de contraste.
+Certaines couleurs par défaut de C4 ne respectent pas ces valeurs, comme le texte blanc sur gris des systèmes externes.
+Une source C4 DOIT changer chacune de ces couleurs, avec `UpdateElementStyle`.
+Les personnes ayant une basse vision peuvent alors lire chaque libellé.
+
+[[DIA-025]]
+*DIA-025.* Un diagramme rendu DOIT avoir un fond clair et opaque, comme PlantUML le dessine par défaut.
+Une source NE DOIT PAS fixer un fond transparent.
+Le site a un thème sombre, et des traits foncés sur une image transparente y disparaîtraient.
+
+== Références
+
+=== Références informatives
+
+* link:https://www.w3.org/WAI/tutorials/images/complex/[Images Tutorial, Complex Images], W3C Web Accessibility Initiative. link:https://web.archive.org/web/20261026202620/https://www.w3.org/WAI/tutorials/images/complex/[Copie archivée]
+* link:https://c4model.com/diagrams/notation[C4 model, Notation], Simon Brown, non versionné. link:https://web.archive.org/web/20261024081510/https://c4model.com/diagrams/notation[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-05 |Première version.
+|===

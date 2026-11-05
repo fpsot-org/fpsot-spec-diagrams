@@ -1,0 +1,23 @@
+# FPSOT diagrams specification
+
+> How FPSOT repositories draw, publish and translate diagrams: PlantUML sources, C4 for architecture, UML for structure and behavior, BPMN for business processes, data models generated from LinkML, text alternatives, color, SVG output and file names, and English and French diagrams.
+
+## Specification
+
+- [Overview](spec/en/index.adoc): scope, parts, conformance and references.
+- [Diagrams as code](spec/en/principles.adoc): DIA-001 to DIA-007.
+- [Notations](spec/en/notations.adoc): DIA-010 to DIA-018.
+- [Text alternatives and color](spec/en/alternatives.adoc): DIA-020 to DIA-025.
+- [Output and file names](spec/en/output.adoc): DIA-030 to DIA-033.
+- [Diagrams in two languages](spec/en/languages.adoc): DIA-040 to DIA-044.
+
+## Guide
+
+- [Draw a diagram](docs/modules/en/pages/index.adoc)
+
+## Optional
+
+- [Agent skill](skill/SKILL.md)
+- [Comparison data](jurisdictions/baseline.yaml)
+- [Example diagram sources](diagrams/)
+- [Français](spec/fr/index.adoc)

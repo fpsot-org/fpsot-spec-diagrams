@@ -1,0 +1,140 @@
+= Notations
+include::_fpsot-terms.adoc[]
+
+Ces règles fixent la notation qu'un diagramme emploie selon son but.
+Une personne qui connaît la notation lit alors de la même façon chaque diagramme de ce type de la {abbr-fpsot-first}.
+Ces notations sont le modèle C4, le {abbr-uml-first} et le {abbr-bpmn-first}.
+
+== Choix de la notation
+
+[[DIA-010]]
+*DIA-010.* Chaque diagramme DOIT employer la notation que le tableau ci-dessous donne pour son but.
+Un diagramme NE DOIT PAS mêler deux de ces notations.
+D'autres diagrammes, comme un parcours de lecture, PEUVENT employer des boîtes et des flèches avec une légende.
+Chaque notation donne un seul sens à ses formes, et un diagramme mêlé leur en donnerait deux.
+
+[cols="2,2,1",options="header"]
+|===
+|But |Notation |Règles
+|Architecture des systèmes logiciels |Modèle C4 : contexte du système, conteneurs et composants |DIA-011 à DIA-013
+|Structure et comportement à l'intérieur d'un système |{abbr-uml} 2.5.1 |DIA-014
+|Processus d'affaires |{abbr-bpmn} 2.0.2 |DIA-015 à DIA-017
+|Modèles de données |Diagramme généré à partir du schéma LinkML |DIA-018
+|===
+
+== Architecture
+
+[[DIA-011]]
+*DIA-011.* Un diagramme d'architecture DOIT être une des vues du link:https://c4model.com/[modèle C4] : contexte du système, conteneurs ou composants.
+Il DOIT employer les macros C4 de la bibliothèque standard de PlantUML, comme `Person`, `Container` et `Rel`.
+Le niveau du code du modèle C4 NE DOIT PAS être dessiné à la main.
+Une vue du code vient du code lui-même ou d'un diagramme généré.
+Les vues C4 s'approchent d'un niveau à la fois, et chaque personne s'arrête au niveau qui lui suffit.
+
+[[DIA-012]]
+*DIA-012.* Chaque élément d'un diagramme C4 DOIT montrer son nom et une courte description de son rôle.
+Son type DOIT paraître dans l'élément ou dans la légende.
+Chaque conteneur et chaque composant DOIT aussi nommer sa technologie.
+Chaque relation DOIT aller dans un seul sens, avec un libellé précis, comme « Envoie des événements à ».
+Une relation entre deux conteneurs DOIT aussi nommer son protocole.
+Chaque diagramme C4 DOIT afficher la légende de la bibliothèque, avec `SHOW_LEGEND()`.
+
+Les link:https://c4model.com/diagrams/notation[consignes de notation du modèle C4] demandent le même contenu, qui s'apprend donc une seule fois.
+
+[[DIA-013]]
+*DIA-013.* Un projet PEUT ajouter les vues C4 complémentaires : paysage des systèmes, vue dynamique et déploiement.
+Elles DOIVENT aussi respecter DIA-012.
+Une vue de déploiement montre où s'exécute chaque conteneur, ce que le diagramme de conteneurs ne montre pas.
+
+== Structure et comportement
+
+[[DIA-014]]
+*DIA-014.* Un diagramme de structure ou de comportement interne au système DOIT suivre link:https://www.omg.org/spec/UML/2.5.1[UML 2.5.1] de l'Object Management Group.
+Il DEVRAIT être un diagramme de classes, de séquence, de machine à états ou de cas d'utilisation.
+Il NE DOIT PAS donner un autre sens à un symbole {abbr-uml}.
+Par exemple, un triangle vide marque toujours une généralisation.
+La version 2.5.1 est en vigueur, et l'édition de l'{abbr-iso-first} de 2012, link:https://www.iso.org/standard/52854.html[ISO/IEC 19505-2], publie une version antérieure.
+Les personnes formées au {abbr-uml} lisent alors chaque symbole comme la norme le définit.
+
+== Processus d'affaires
+
+[[DIA-015]]
+*DIA-015.* Un diagramme de processus d'affaires DOIT suivre link:https://www.omg.org/spec/BPMN/2.0.2[BPMN 2.0.2] de l'Object Management Group.
+Il DOIT employer seulement les éléments de la sous-classe de conformité descriptive (Descriptive) de cette norme.
+L'édition de l'{abbr-iso} de 2013, link:https://www.iso.org/standard/62652.html[ISO/IEC 19510], est identique à la version antérieure 2.0.1.
+La sous-classe descriptive contient les éléments que comprennent les personnes extérieures à l'équipe de modélisation.
+
+[[DIA-016]]
+*DIA-016.* PlantUML n'a pas de notation {abbr-bpmn}.
+Un diagramme de processus DOIT donc être un link:https://plantuml.com/activity-diagram-beta[diagramme d'activités PlantUML], selon la correspondance du tableau ci-dessous.
+Il NE DOIT PAS employer un élément d'activité que le tableau omet.
+Son titre DOIT le nommer comme un processus, et sa légende DOIT donner la correspondance qu'il emploie.
+Un processus à plusieurs bassins DEVRAIT avoir un diagramme par bassin.
+
+La syntaxe d'activité ne peut pas montrer les messages entre bassins.
+La correspondance garde le sens du {abbr-bpmn} avec les outils que le flux de travail partagé exécute déjà.
+
+[cols="1,1",options="header"]
+|===
+|Élément BPMN 2.0.2 |Syntaxe d'activité PlantUML
+|Bassin |Le titre du diagramme
+|Couloir |Couloir, `\|Nom du couloir\|`
+|Événement de début (simple) |`start`
+|Événement de fin (simple) |`stop`
+|Événement de fin avec terminaison |`end`
+|Tâche, tâche utilisateur, tâche de service |Action, `:Vérifier la demande;`
+|Sous-processus réduit |Action avec un libellé visible, `:Payer les frais (sous-processus);`
+|Passerelle exclusive |`if (question?) then (réponse)` … `else` … `endif`
+|Passerelle parallèle |`fork` … `fork again` … `end fork`
+|Flux de séquence |La flèche entre deux étapes
+|Annotation |`note right` … `end note`
+|===
+
+[[DIA-017]]
+*DIA-017.* Certains processus passent par un outil {abbr-bpmn} ou s'exécutent dans un moteur.
+Un tel processus DOIT garder son fichier d'échange BPMN 2.0.2 comme source de référence.
+Ce fichier DOIT se trouver dans `diagrams/`, avec l'extension `.bpmn`.
+Son nom de base DOIT être celui du diagramme, sans la terminaison de langue.
+Le diagramme PlantUML DOIT montrer les mêmes éléments et les mêmes flux que ce fichier.
+Le fichier d'échange est le modèle, et le diagramme en est une vue pour le lectorat.
+
+== Modèles de données
+
+[[DIA-018]]
+*DIA-018.* Un diagramme de modèle de données DOIT venir de son schéma LinkML, par le générateur PlantUML de link:https://linkml.io/linkml/generators/[LinkML], `gen-plantuml`.
+Le générateur DOIT écrire sur la sortie standard, que la commande envoie dans un fichier `<name>.iuml` de `diagrams/`.
+Son option `-d` NE DOIT PAS être employée, car elle produit le rendu par un serveur en ligne.
+Le fichier généré NE DOIT PAS être dessiné ni modifié à la main.
+Il DOIT être archivé, puis régénéré dans le même {term-commit} que chaque changement du schéma.
+La commande qui le produit DOIT être consignée dans le dépôt, par exemple dans un script que l'intégration continue exécute.
+
+Chaque langue DOIT avoir une petite source enveloppe, comme `<name>-fr.puml`, qui inclut le fichier généré.
+L'enveloppe DOIT porter le nom `@startuml`, le titre et la légende, comme l'exigent DIA-002 et DIA-006.
+Le flux de travail partagé des diagrammes produit alors le rendu de chaque enveloppe avec la version fixe de PlantUML.
+Le générateur dessine chaque classe avec ses champs, et chaque lien avec sa multiplicité, en notation de classes {abbr-uml}.
+Une copie dessinée d'un schéma vieillit, mais une copie générée correspond toujours au schéma.
+Un serveur en ligne pourrait aussi changer l'image, ou recevoir un schéma qui n'est pas encore public.
+
+== Références
+
+=== Références normatives
+
+* link:https://c4model.com/[The C4 model], Simon Brown, non versionné. link:https://web.archive.org/web/20261027093216/https://c4model.com/[Copie archivée]
+* link:https://c4model.com/diagrams/notation[C4 model, Notation], Simon Brown, non versionné. link:https://web.archive.org/web/20261024081510/https://c4model.com/diagrams/notation[Copie archivée]
+* link:https://www.omg.org/spec/UML/2.5.1[Unified Modeling Language, version 2.5.1], Object Management Group, formal/17-12-05, 2017-12. link:https://web.archive.org/web/20261022232220/https://www.omg.org/spec/UML/2.5.1[Copie archivée]
+* link:https://www.omg.org/spec/BPMN/2.0.2[Business Process Model and Notation, version 2.0.2], Object Management Group, formal/13-12-09, 2014-01. link:https://web.archive.org/web/20261023190255/https://www.omg.org/spec/BPMN/2.0.2/[Copie archivée]
+* link:https://plantuml.com/activity-diagram-beta[PlantUML, Activity diagram (new syntax)], PlantUML project, 1.2026.9. link:https://web.archive.org/web/20261026091044/https://plantuml.com/activity-diagram-beta[Copie archivée]
+* link:https://linkml.io/linkml/generators/[LinkML, Generators], LinkML project, 1.12.1. link:https://web.archive.org/web/20261001144734/https://linkml.io/linkml/generators/[Copie archivée]
+
+=== Références informatives
+
+* link:https://www.iso.org/standard/52854.html[ISO/IEC 19505-2:2012, Technologies de l'information, Langage de modélisation unifié OMG (OMG UML), Partie 2 : Superstructure], ISO/IEC JTC 1, édition 1, 2012-04-20. link:https://web.archive.org/web/20261018002427/https://www.iso.org/standard/52854.html[Copie archivée]
+* link:https://www.iso.org/standard/62652.html[ISO/IEC 19510:2013, Technologies de l'information, Modèle de procédé d'affaire et notation de l'OMG], ISO/IEC JTC 1, édition 1, 2013-07-15. link:https://web.archive.org/web/20261009192615/https://www.iso.org/standard/62652.html[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-05 |Première version.
+|===

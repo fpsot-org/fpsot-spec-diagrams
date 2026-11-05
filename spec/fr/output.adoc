@@ -1,0 +1,66 @@
+= Fichiers produits et noms de fichiers
+include::_fpsot-terms.adoc[]
+
+Ces règles couvrent les fichiers que produisent les sources PlantUML, leur insertion dans les pages et leurs noms.
+
+== Fichiers rendus
+
+[[DIA-030]]
+*DIA-030.* Chaque diagramme DOIT être rendu en {abbr-svg-first}, tel que link:https://www.w3.org/TR/SVG11/[SVG 1.1] le définit.
+Le rendu DOIT employer la version de PlantUML que fixe le flux de travail partagé des diagrammes.
+Le fichier {abbr-svg} DOIT être archivé à côté de sa source, et NE DOIT PAS être modifié à la main.
+Une page NE DOIT PAS publier un diagramme seulement sous forme d'image matricielle.
+Le flux de travail échoue quand un fichier {abbr-svg} manque ou n'est pas à jour.
+Son artefact `diagrams-svg` contient alors les fichiers à archiver.
+
+Un fichier {abbr-svg} reste net à tout agrandissement, et son texte reste du texte.
+Les pages et les livres se produisent alors sans PlantUML.
+
+[[DIA-031]]
+*DIA-031.* Une page DOIT insérer chaque diagramme avec une macro d'image et un chemin relatif vers son fichier {abbr-svg}.
+À partir de `spec/fr/`, le chemin est `../../diagrams/` suivi du nom du fichier.
+Une page NE DOIT PAS produire le rendu du PlantUML lors de la production, par exemple avec une extension d'Asciidoctor.
+Elle PEUT montrer une source comme du code, dans un bloc `[source,plantuml]`.
+Les pages {abbr-html-first}, le site et le livre {abbr-pdf-first} montrent alors tous le même fichier archivé.
+
+[[DIA-032]]
+*DIA-032.* Un fichier {abbr-svg} NE DOIT PAS charger une police, une image ou un script d'un autre hôte.
+Il NE DOIT PAS contenir de script.
+Le site n'envoie aucune requête à d'autres hôtes, et une image publiée ne le doit pas non plus.
+Une image avec un script pourrait exécuter du code dans le navigateur de la personne qui lit.
+
+== Noms de fichiers
+
+[[DIA-033]]
+*DIA-033.* Les noms des fichiers de diagrammes DOIVENT suivre NAM-070 et NAM-071 de la spécification sur le nommage.
+Ils sont en kebab-case et en anglais, et le fichier {abbr-svg} a le nom de base de sa source.
+Le nom de base DEVRAIT commencer par le sujet et finir par le type de vue, selon le tableau ci-dessous.
+Le tableau couvre le modèle C4, le {abbr-uml-first} et le {abbr-bpmn-first}.
+Un diagramme en deux langues ajoute ensuite sa langue, comme le fixe DIA-041.
+On trouve alors toutes les vues d'un sujet ensemble, et le type de chaque diagramme se voit à son nom.
+
+[cols="1,2",options="header"]
+|===
+|Terminaison |Type de diagramme
+|`-landscape`, `-context`, `-container`, `-component` |Vues C4
+|`-deployment`, `-dynamic` |Vues C4 complémentaires
+|`-class`, `-sequence`, `-state`, `-use-case` |Diagrammes {abbr-uml}
+|`-process` |Processus {abbr-bpmn}
+|`-model` |Modèle de données généré
+|===
+
+Par exemple, `registry-container-fr.puml` produit `registry-container-fr.svg`, et `claim-review-process.bpmn` se trouve à côté.
+
+== Références
+
+=== Références normatives
+
+* link:https://www.w3.org/TR/SVG11/[Scalable Vector Graphics (SVG) 1.1 (Second Edition)], W3C, Recommendation, 2011-08-16. link:https://web.archive.org/web/20261019073414/https://www.w3.org/TR/SVG11/[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-05 |Première version.
+|===

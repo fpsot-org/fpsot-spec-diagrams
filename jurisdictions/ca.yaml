@@ -1,0 +1,13 @@
+code: CA
+name: {en: Canada, fr: Canada}
+rows:
+  - id: DIA-011
+    text: {en: "Departments that present to the Government of Canada Enterprise Architecture Review Board show a current state and a target state architecture diagram, with a summary by layer: business, information, application, technology and security. The template names no notation.", fr: "Les ministères qui se présentent au Conseil d’examen de l’architecture intégrée du gouvernement du Canada montrent un diagramme d’architecture actuelle et un diagramme d’architecture cible, avec un résumé par couche : affaires, information, application, technologie et sécurité. Le gabarit ne nomme aucune notation."}
+    status: looser
+    source: {title: "GC EARB Presenter Template (general), slides 6 to 9", version: "2022-11-30", date: "2022-11-30", url: "https://wiki.gccollab.ca/images/e/e6/2022-11-30_GC_EARB_Presenter_GENERAL_EN.pptx", archive: "https://web.archive.org/web/20250911070925/https://wiki.gccollab.ca/images/e/e6/2022-11-30_GC_EARB_Presenter_GENERAL_EN.pptx"}
+    last_checked: "2026-11-05"
+  - id: DIA-015
+    text: {en: "The same template asks for a business process, information or data flow diagram. It names no notation, so BPMN is not required.", fr: "Le même gabarit demande un diagramme de processus d’affaires, d’information ou de flux de données. Il ne nomme aucune notation, et le BPMN n’est donc pas exigé."}
+    status: looser
+    source: {title: "GC EARB Presenter Template (general), slide 5", version: "2022-11-30", date: "2022-11-30", url: "https://wiki.gccollab.ca/images/e/e6/2022-11-30_GC_EARB_Presenter_GENERAL_EN.pptx", archive: "https://web.archive.org/web/20250911070925/https://wiki.gccollab.ca/images/e/e6/2022-11-30_GC_EARB_Presenter_GENERAL_EN.pptx"}
+    last_checked: "2026-11-05"

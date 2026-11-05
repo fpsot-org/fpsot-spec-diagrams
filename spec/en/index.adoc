@@ -1,34 +1,47 @@
 = FPSOT diagrams specification
 include::_fpsot-terms.adoc[]
 
-Replace this page with the normative text of the specification.
-Start with the scope, then the conformance classes, then the requirements.
+This specification sets how {abbr-fpsot-first} projects draw, publish and translate diagrams.
+It covers the diagrams in specifications, guides and product documentation.
+Requirement DOC-030 of the documentation specification already requires diagrams as code and a text alternative for each image.
+This specification sets how to meet DOC-030 for diagrams, and does not change it.
+
+The rules come in five parts.
+
+* xref:principles.adoc[Diagrams as code] covers the PlantUML source of each diagram.
+* xref:notations.adoc[Notations] sets which notation to use for which purpose.
+* xref:alternatives.adoc[Text alternatives and color] says what a text alternative contains and how diagrams use color.
+* xref:output.adoc[Output and file names] covers the rendered files and how pages embed them.
+* xref:languages.adoc[Diagrams in two languages] covers English and French diagrams.
+
+The {abbr-fpsot} accessibility specification owns every accessibility rule and value.
+This specification points to it and applies it to diagrams.
+It never restates a contrast value or changes an accessibility rule.
 
 == Conformance
 
-[quote, RFC 8174]
+[quote, 'link:https://www.rfc-editor.org/info/rfc8174[RFC 8174]']
 ____
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 (RFC 2119, RFC 8174) when, and only when, they appear in all capitals, as shown here.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 (link:https://www.rfc-editor.org/info/rfc2119[RFC 2119], link:https://www.rfc-editor.org/info/rfc8174[RFC 8174]) when, and only when, they appear in all capitals, as shown here.
 ____
 
-The French version uses the keywords of requirement WRT-011 of the {abbr-fpsot-first} writing specification.
+The keywords follow requirement WRT-010 of the {abbr-fpsot} writing specification.
+The French version uses the French keywords of WRT-011.
 
-== Requirements
+A repository conforms to this specification when every diagram it publishes meets every MUST rule.
+A published diagram is one that a page, a book or a site of the project shows.
 
-Give each requirement an anchor line with its ID, directly above its paragraph.
-The anchor looks like `+[[XYZ-001]]+`.
-The example below shows the form. Replace it with the first requirement.
+== References
 
-[[TPL-001]]
-*TPL-001.* A normative statement MUST use one of the {abbr-bcp-first} 14 keywords in capitals.
-The keyword gives the rule its strength.
+=== Normative
+
+* link:https://www.rfc-editor.org/info/rfc2119[RFC 2119, Key words for use in RFCs to Indicate Requirement Levels], IETF, BCP 14, 1997-03. link:https://web.archive.org/web/20261103005705/https://www.rfc-editor.org/info/rfc2119/[Archived copy]
+* link:https://www.rfc-editor.org/info/rfc8174[RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words], IETF, BCP 14, 2017-05. link:https://web.archive.org/web/20261103005743/https://www.rfc-editor.org/info/rfc8174/[Archived copy]
 
 == Document history
-
-Add one row for each version that changes this page.
 
 [cols="1,1,4",options="header"]
 |===
 |Version |Date |Change
-|0.1.0 |2026-11-03 |First version.
+|0.1.0 |2026-11-05 |First version.
 |===

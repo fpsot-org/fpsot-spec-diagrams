@@ -1,0 +1,14 @@
+' SPDX-License-Identifier: Community-Spec-1.0
+' Shared layout of the registry context diagram, used by the guide.
+' The labels come from registry-context-labels-<lang>.iuml.
+!include <C4/C4_Context>
+UpdateElementStyle("person", $legendText=$person_type)
+UpdateElementStyle("system", $legendText=$system_type)
+UpdateElementStyle("external_system", $bgColor="#5A5A5A", $borderColor="#3D3D3D", $legendText=$external_type)
+title $title
+Person(clerk, $clerk, $clerk_desc)
+System(registry, $registry, $registry_desc)
+System_Ext(idp, $idp, $idp_desc)
+Rel(clerk, registry, $records, "HTTPS")
+Rel(registry, idp, $checks, "OpenID Connect")
+SHOW_LEGEND()

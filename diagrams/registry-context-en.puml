@@ -1,0 +1,6 @@
+@startuml registry-context-en
+' SPDX-License-Identifier: Community-Spec-1.0
+' Context diagram of the registry, the C4 example of the how-to guide (DIA-011, DIA-042).
+!include registry-context-labels-en.iuml
+!include registry-context.iuml
+@enduml
