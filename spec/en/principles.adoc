@@ -33,8 +33,11 @@ The wrapper source that includes it MUST meet those three rules.
 It MUST NOT need Graphviz or any other program.
 It MUST NOT include a file from the network.
 It MAY include the PlantUML standard library, such as `<C4/C4_Container>`, and files from `diagrams/`.
-Every machine then draws the same image from the same source.
+Every machine then draws the same layout from the same source.
 A file from the network could change or vanish without a {term-commit}.
+
+Text widths still depend on the fonts of each machine.
+So the committed SVG is the one that the shared workflow renders.
 
 == Content
 

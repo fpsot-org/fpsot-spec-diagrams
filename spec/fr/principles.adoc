@@ -32,8 +32,11 @@ La source enveloppe qui l'inclut DOIT respecter ces trois règles.
 Elle DOIT employer la mise en page Smetana de cette version.
 Elle NE DOIT PAS exiger Graphviz ou un autre programme, ni inclure un fichier venant du réseau.
 Elle PEUT inclure la bibliothèque standard de PlantUML, comme `<C4/C4_Container>`, et des fichiers de `diagrams/`.
-Chaque machine dessine alors la même image à partir de la même source.
+Chaque machine dessine alors la même mise en page à partir de la même source.
 Un fichier venant du réseau pourrait changer ou disparaître sans aucun {term-commit}.
+
+La largeur du texte dépend toutefois des polices de chaque machine.
+Le SVG versé est donc celui que produit le flux de travail partagé.
 
 == Contenu
 
