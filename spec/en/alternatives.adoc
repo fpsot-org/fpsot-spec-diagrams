@@ -1,0 +1,77 @@
+= Text alternatives and color
+include::_fpsot-terms.adoc[]
+
+The {abbr-fpsot-first} accessibility specification requires a text alternative for every image, and requirement DOC-030 applies it to diagrams.
+The accessibility specification also sets the use of color and the contrast values.
+These rules do not restate those rules.
+They say what a good alternative to a diagram contains, and how a diagram meets the color rules.
+
+== Text alternatives
+
+[[DIA-020]]
+*DIA-020.* Each embedded diagram MUST have a short text alternative in its image macro.
+It MUST name the kind of diagram and its subject, then give its main point in one sentence.
+The text "Context diagram of the registry: clerks record assets in it" is an example.
+It MUST NOT repeat the file name or start with "Image of".
+A screen reader announces the image first, so the short text tells the reader whether to read on.
+
+[[DIA-021]]
+*DIA-021.* Each diagram MUST also have a long description in the text of its page, right after the image.
+The long description MUST give the same facts as the diagram, and nothing that the diagram lacks.
+It MUST name each element, each relationship with its direction and label, and each group or boundary.
+It MUST follow the reading order of its notation, as the table below shows.
+A diagram that the text right before it already describes in full MAY point to that text instead.
+The link:https://www.w3.org/WAI/tutorials/images/complex/[W3C tutorial on complex images] advises the same split between a short and a long text.
+
+[cols="1,3",options="header"]
+|===
+|Notation |Long description
+|C4 view |A list of the elements, grouped by boundary, each with its type, technology and description, then a list of the relationships, such as "Registry to identity provider: checks sign-in with, OpenID Connect".
+|{abbr-uml-first} class diagram |A table of the classes, with their attributes, then a list of the associations with their multiplicity.
+|{abbr-uml} sequence diagram |A numbered list of the messages, in time order, each with its sender and receiver.
+|{abbr-uml} state machine |A table with one row per transition: the state, the event, the condition and the next state.
+|{abbr-bpmn-first} process |A numbered list of the steps, each with its lane. Each gateway becomes a question, with a sub-list for each answer.
+|Generated data model |A table of the classes and their fields, then a list of the links with their multiplicity.
+|===
+
+[[DIA-022]]
+*DIA-022.* The text alternatives of a diagram MUST change in the same {term-commit} as its source.
+The review of a change to a diagram MUST check both alternatives against the new image.
+An alternative that describes an older diagram misleads the people who rely on it.
+
+== Color and contrast
+
+[[DIA-023]]
+*DIA-023.* A diagram MUST NOT use color as the only way to show a meaning.
+A label, a shape, a line style or a legend entry MUST also show each meaning of a color.
+External systems, for example, carry the word "external" and a gray fill.
+The accessibility specification sets this rule for all content, and the link:https://c4model.com/diagrams/notation[C4 notation guidance] gives the same advice.
+A diagram SHOULD stay readable when printed in shades of gray.
+
+[[DIA-024]]
+*DIA-024.* Text, lines and shapes in a diagram MUST meet the contrast values that the accessibility specification sets.
+A source SHOULD use `skinparam monochrome true`, which draws in black, white and gray.
+A source that uses other colors MUST check each pair of text and background colors with a contrast checker.
+Some default colors of the C4 library fail these values, such as white text on the gray of external systems.
+A C4 source MUST change each such color, with `UpdateElementStyle`.
+People with low vision can then read every label.
+
+[[DIA-025]]
+*DIA-025.* A rendered diagram MUST have an opaque light background, as PlantUML draws by default.
+A source MUST NOT set a transparent background.
+The site has a dark theme, and dark lines on a transparent image would vanish on it.
+
+== References
+
+=== Informative
+
+* link:https://www.w3.org/WAI/tutorials/images/complex/[Images Tutorial, Complex Images], W3C Web Accessibility Initiative. link:https://web.archive.org/web/20261026202620/https://www.w3.org/WAI/tutorials/images/complex/[Archived copy]
+* link:https://c4model.com/diagrams/notation[C4 model, Notation], Simon Brown, not versioned. link:https://web.archive.org/web/20261024081510/https://c4model.com/diagrams/notation[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-05 |First version.
+|===

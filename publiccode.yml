@@ -9,22 +9,30 @@ developmentStatus: concept
 softwareType: "standalone/other"
 description:
   en:
-    shortDescription: Template for FPSOT specification repositories.
+    shortDescription: Diagram rules for FPSOT repositories.
     longDescription: >
-      Starting point for an FPSOT specification repository. It holds the
-      layout, the Community Specification License files, and the CI that
-      checks requirement IDs, links, languages and prose.
+      Rules for drawing diagrams as PlantUML code, choosing the C4 model for
+      architecture, UML for structure and behavior and BPMN for business
+      processes, generating data model diagrams from LinkML, writing text
+      alternatives, using color, publishing SVG files and making each
+      diagram in English and French.
     features:
-      - Specification repository layout
+      - Diagrams as PlantUML code
+      - C4, UML 2.5.1 and BPMN 2.0.2 by purpose
+      - Text alternatives and bilingual diagrams
   fr:
-    shortDescription: Gabarit des dépôts de spécification de FPSOT.
+    shortDescription: Règles sur les diagrammes des dépôts FPSOT.
     longDescription: >
-      Point de départ d'un dépôt de spécification de FPSOT. Il contient la
-      structure, les fichiers de la Community Specification License, et
-      l'intégration continue qui vérifie les identifiants, les liens, les
-      langues et la rédaction.
+      Règles pour dessiner les diagrammes sous forme de code PlantUML,
+      choisir le modèle C4 pour l'architecture, UML pour la structure et le
+      comportement et BPMN pour les processus d'affaires, générer les
+      diagrammes de modèles de données à partir de LinkML, rédiger les
+      textes de remplacement, employer la couleur, publier des fichiers SVG
+      et produire chaque diagramme en anglais et en français.
     features:
-      - Structure d'un dépôt de spécification
+      - Diagrammes sous forme de code PlantUML
+      - C4, UML 2.5.1 et BPMN 2.0.2 selon le but
+      - Textes de remplacement et diagrammes bilingues
 legal:
   license: Community-Spec-1.0
 maintenance:

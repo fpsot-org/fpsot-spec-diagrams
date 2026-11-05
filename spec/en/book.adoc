@@ -4,4 +4,14 @@
 
 include::index.adoc[leveloffset=+1]
 
+include::principles.adoc[leveloffset=+1]
+
+include::notations.adoc[leveloffset=+1]
+
+include::alternatives.adoc[leveloffset=+1]
+
+include::output.adoc[leveloffset=+1]
+
+include::languages.adoc[leveloffset=+1]
+
 include::glossary.adoc[leveloffset=+1]

@@ -1,0 +1,15 @@
+' SPDX-License-Identifier: Community-Spec-1.0
+' Libellés français du diagramme de contexte du registre.
+!$title = "Diagramme de contexte du registre"
+!$LEGEND_TITLE_TEXT = "Légende"
+!$person_type = "personne"
+!$system_type = "système"
+!$external_type = "système externe"
+!$clerk = "Commis"
+!$clerk_desc = "Inscrit les biens d'un organisme public."
+!$registry = "Registre"
+!$registry_desc = "Tient la liste des biens."
+!$idp = "Fournisseur d'identité"
+!$idp_desc = "Authentifie les personnes."
+!$records = "Inscrit des biens dans"
+!$checks = "Vérifie la connexion avec"

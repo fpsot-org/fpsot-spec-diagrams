@@ -1,0 +1,15 @@
+' SPDX-License-Identifier: Community-Spec-1.0
+' English labels of the registry context diagram.
+!$title = "Context diagram of the registry"
+!$LEGEND_TITLE_TEXT = "Legend"
+!$person_type = "person"
+!$system_type = "system"
+!$external_type = "external system"
+!$clerk = "Clerk"
+!$clerk_desc = "Records the assets of a public body."
+!$registry = "Registry"
+!$registry_desc = "Keeps the list of assets."
+!$idp = "Identity provider"
+!$idp_desc = "Signs people in."
+!$records = "Records assets in"
+!$checks = "Checks sign-in with"

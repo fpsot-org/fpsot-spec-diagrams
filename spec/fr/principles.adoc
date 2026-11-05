@@ -1,0 +1,66 @@
+= Diagrammes sous forme de code
+include::_fpsot-terms.adoc[]
+
+Ces règles couvrent la source de chaque diagramme d'un dépôt de la {abbr-fpsot-first}.
+L'exigence DOC-030 de la spécification de documentation exige chaque diagramme sous forme de code.
+Ces règles indiquent quel code employer, où le ranger et ce qu'il contient.
+
+== Source
+
+[[DIA-001]]
+*DIA-001.* La source de chaque diagramme DOIT être écrite en link:https://plantuml.com/[PlantUML].
+Un diagramme NE DOIT PAS exister seulement sous forme d'image ou de fichier d'un outil de dessin.
+PlantUML est un logiciel libre, fonctionne hors ligne et offre une syntaxe texte pour chaque notation de cette spécification.
+Un seul langage pour tous les diagrammes permet à chaque personne qui révise de lire et de modifier toute source.
+
+[[DIA-002]]
+*DIA-002.* Chaque diagramme DOIT avoir son propre fichier source dans le dossier `diagrams/` à la racine du dépôt, sans sous-dossier.
+Sa ligne `@startuml` DOIT nommer le diagramme avec le nom de base de son fichier, comme `@startuml registry-context-en`.
+Le flux de travail partagé des diagrammes rend chaque fichier `.puml` de ce dossier.
+La production des pages publie seulement les fichiers rendus de ce dossier, et non ceux de ses sous-dossiers.
+
+[[DIA-003]]
+*DIA-003.* Une source écrite à la main DOIT commencer par deux commentaires, juste après sa ligne `@startuml`.
+Le premier DOIT donner sa licence sous la forme `SPDX-License-Identifier: Community-Spec-1.0`, ou la licence du dépôt.
+Le second DOIT dire ce que montre le diagramme et nommer la page ou les identifiants d'exigences qu'il illustre.
+Le lectorat connaît alors les conditions de réutilisation et la place du diagramme.
+Une source générée suit plutôt DIA-018.
+
+[[DIA-004]]
+*DIA-004.* Une source DOIT se rendre avec la version de PlantUML que fixe le flux de travail partagé.
+Elle DOIT employer la mise en page Smetana de cette version.
+Elle NE DOIT PAS exiger Graphviz ou un autre programme, ni inclure un fichier venant du réseau.
+Elle PEUT inclure la bibliothèque standard de PlantUML, comme `<C4/C4_Container>`, et des fichiers de `diagrams/`.
+Chaque machine dessine alors la même image à partir de la même source.
+Un fichier venant du réseau pourrait changer ou disparaître sans aucun {term-commit}.
+
+== Contenu
+
+[[DIA-005]]
+*DIA-005.* Un diagramme DEVRAIT montrer une seule idée, avec une vingtaine d'éléments au plus.
+Un sujet plus vaste DEVRAIT se diviser en plusieurs diagrammes, comme un diagramme de conteneurs par système.
+Un petit diagramme reste lisible sur un téléphone, et son texte de remplacement reste court.
+
+[[DIA-006]]
+*DIA-006.* Chaque diagramme DOIT avoir un `title` avec son type et son sujet, comme « Diagramme de conteneurs du registre ».
+Il DOIT avoir une légende pour chaque forme, style de trait ou couleur que sa notation ne définit pas.
+Un diagramme a alors un sens par lui-même, sans la page qui l'entoure.
+
+[[DIA-007]]
+*DIA-007.* Les libellés d'un diagramme DOIVENT employer les termes de la base terminologique de rédaction.
+Chaque abréviation d'un diagramme DOIT être développée dans sa légende ou dans sa description longue.
+Un mot d'un diagramme a alors le même sens que dans le texte qui l'entoure.
+
+== Références
+
+=== Références normatives
+
+* link:https://plantuml.com/[PlantUML], PlantUML project, 1.2026.9, 2026-10-17. link:https://web.archive.org/web/20261022042718/https://plantuml.com/[Copie archivée]
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-05 |Première version.
+|===

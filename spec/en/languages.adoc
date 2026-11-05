@@ -1,0 +1,53 @@
+= Diagrams in two languages
+include::_fpsot-terms.adoc[]
+
+Every {abbr-fpsot-first} page exists in English and in French, and its diagrams are part of the page.
+A diagram keeps its words as text in its {abbr-svg-first} file, and each language has its own file.
+Translators can then work on diagram labels as they work on other text.
+
+== One diagram per language
+
+[[DIA-040]]
+*DIA-040.* Each diagram with words that people read MUST exist in English and in French.
+The French page MUST embed the French diagram.
+The text alternatives of each diagram MUST be in the language of its page.
+A French reader then gets the same information as an English reader, in their own language.
+
+[[DIA-041]]
+*DIA-041.* The two sources of a diagram MUST share a base name and end in `-en` and `-fr`.
+An example is `registry-context-en.puml` and `registry-context-fr.puml`.
+The ending is the language subtag of the diagram, in lower case.
+Each rendered file keeps the name of its source, such as `registry-context-fr.svg`.
+Reviewers then see at a glance whether both languages exist.
+
+== Label files
+
+[[DIA-042]]
+*DIA-042.* When both languages share one layout, authors SHOULD write it once, in a file named `<name>.iuml`.
+The labels of each language SHOULD then go in `<name>-labels-en.iuml` and `<name>-labels-fr.iuml`, as PlantUML variables.
+Each language source then holds only its two `!include` lines: its labels first, then the layout.
+The two diagrams cannot drift apart, and translators change only the label files.
+The diagrams workflow renders `.puml` files only, so the included files make no image of their own.
+
+[[DIA-043]]
+*DIA-043.* A small diagram MAY instead have two complete sources, one per language.
+The two sources MUST then show the same elements, relationships and layout.
+Two complete files are simpler to read when a diagram has only a few labels.
+
+== Names that programs read
+
+[[DIA-044]]
+*DIA-044.* A name that programs read MUST stay the same in both languages.
+Fields, paths and codes are such names, as the naming specification sets.
+A diagram that shows only such names MUST be one file with no language ending.
+A generated data model is an example.
+Both pages then embed that file, and each page gives the text alternatives in its own language.
+A translated field name would no longer match the data.
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-05 |First version.
+|===

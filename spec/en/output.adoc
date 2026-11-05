@@ -1,0 +1,65 @@
+= Output and file names
+include::_fpsot-terms.adoc[]
+
+These rules cover the files that the PlantUML sources produce, how pages embed them, and how they are named.
+
+== Rendered files
+
+[[DIA-030]]
+*DIA-030.* Authors MUST render each diagram to {abbr-svg-first}, as link:https://www.w3.org/TR/SVG11/[SVG 1.1] defines it.
+They MUST use the PlantUML version that the shared diagrams workflow pins.
+They MUST commit the {abbr-svg} file beside its source, and MUST NOT edit it by hand.
+A page MUST NOT publish a diagram only as a raster image.
+The workflow fails when an {abbr-svg} file is missing or out of date.
+Its `diagrams-svg` artifact then holds the files to commit.
+
+An {abbr-svg} file stays sharp at any zoom, and its text stays text.
+Pages and books then build without PlantUML.
+
+[[DIA-031]]
+*DIA-031.* A page MUST embed each diagram with an image macro and a relative path to its {abbr-svg} file.
+From `spec/en/`, the path is `../../diagrams/` followed by the file name.
+A page MUST NOT render PlantUML at build time, such as with a diagram extension of Asciidoctor.
+It MAY show a source as code, in a `[source,plantuml]` block.
+The {abbr-html-first} pages, the site and the {abbr-pdf-first} book then all show the same committed file.
+
+[[DIA-032]]
+*DIA-032.* An {abbr-svg} file MUST NOT load a font, an image or a script from another host.
+It MUST NOT hold a script.
+The site makes no request to other hosts, and a published image must not either.
+An image with a script could run code in the reader's browser.
+
+== File names
+
+[[DIA-033]]
+*DIA-033.* Diagram file names MUST follow NAM-070 and NAM-071 of the naming specification.
+They are in kebab-case and in English, and the {abbr-svg} file has the base name of its source.
+The base name SHOULD start with the subject and end with the kind of view, from the table below.
+A diagram in two languages then adds its language, as DIA-041 sets.
+Readers find every view of one subject together, and see the kind of each diagram from its name.
+
+[cols="1,2",options="header"]
+|===
+|Ending |Kind of diagram
+|`-landscape`, `-context`, `-container`, `-component` |C4 views
+|`-deployment`, `-dynamic` |Supporting C4 views
+|`-class`, `-sequence`, `-state`, `-use-case` |{abbr-uml-first} diagrams
+|`-process` |{abbr-bpmn-first} process
+|`-model` |Generated data model
+|===
+
+For example, `registry-container-en.puml` renders `registry-container-en.svg`, and `claim-review-process.bpmn` sits beside them.
+
+== References
+
+=== Normative
+
+* link:https://www.w3.org/TR/SVG11/[Scalable Vector Graphics (SVG) 1.1 (Second Edition)], W3C, Recommendation, 2011-08-16. link:https://web.archive.org/web/20261019073414/https://www.w3.org/TR/SVG11/[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-05 |First version.
+|===

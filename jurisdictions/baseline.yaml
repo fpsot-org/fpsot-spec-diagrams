@@ -1,12 +1,59 @@
 # Comparison data. The format is defined by fpsot-spec-doc (model/jurisdiction.yaml).
-# This example row compares requirement TPL-001. Replace it with the rows of this specification.
-# Add one file per jurisdiction, such as ca.yaml or ca/qc.yaml, only when a source exists.
 topics:
-  keywords: {en: Requirement keywords, fr: Mots clés des exigences}
+  diagrams-as-code: {en: Diagrams as code, fr: Diagrammes sous forme de code}
+  architecture: {en: Architecture diagrams, fr: Diagrammes d’architecture}
+  structure-behavior: {en: Structure and behavior, fr: Structure et comportement}
+  processes: {en: Business processes, fr: Processus d’affaires}
+  data-models: {en: Data models, fr: Modèles de données}
+  text-alternatives: {en: Text alternatives, fr: Textes de remplacement}
+  color: {en: Color, fr: Couleur}
+  output: {en: Rendered files, fr: Fichiers rendus}
 rows:
-  - id: TPL-001
-    topic: keywords
-    requirement: {en: Use the BCP 14 keywords., fr: Utiliser les mots clés du BCP 14.}
-    international: {en: "BCP 14 defines MUST, SHOULD and MAY. Only the capital forms carry that meaning.", fr: "Le BCP 14 définit MUST, SHOULD et MAY. Seules les majuscules ont ce sens."}
-    international_source: {title: "RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (BCP 14)", version: "BCP 14", date: "2017-05", url: "https://www.rfc-editor.org/info/rfc8174", archive: "https://web.archive.org/web/20261103005743/https://www.rfc-editor.org/info/rfc8174/"}
-    fpsot: {en: "Keywords in capitals, with a fixed French mapping.", fr: "Mots clés en majuscules, avec une correspondance française fixe."}
+  - id: DIA-001
+    topic: diagrams-as-code
+    requirement: {en: "Each diagram has a PlantUML source.", fr: "Chaque diagramme a une source PlantUML."}
+    international: {en: "No international standard requires diagrams as code. PlantUML draws UML, C4 and other diagrams from plain text, offline.", fr: "Aucune norme internationale n’exige des diagrammes sous forme de code. PlantUML dessine des diagrammes UML, C4 et autres à partir de texte simple, hors ligne."}
+    international_source: {title: "PlantUML", version: "1.2026.9", date: "2026-10-17", url: "https://plantuml.com/", archive: "https://web.archive.org/web/20261022042718/https://plantuml.com/"}
+    fpsot: {en: "PlantUML only, one file per diagram in diagrams/, rendered by the pinned version with the Smetana layout.", fr: "PlantUML seulement, un fichier par diagramme dans diagrams/, rendu par la version fixée avec la mise en page Smetana."}
+  - id: DIA-011
+    topic: architecture
+    requirement: {en: "Architecture diagrams are C4 views.", fr: "Les diagrammes d’architecture sont des vues C4."}
+    international: {en: "The C4 model zooms in through four levels: system context, container, component and code. It is not tied to a notation or a tool.", fr: "Le modèle C4 s’approche en quatre niveaux : contexte du système, conteneurs, composants et code. Il n’est lié à aucune notation ni à aucun outil."}
+    international_source: {title: "The C4 model", url: "https://c4model.com/", archive: "https://web.archive.org/web/20261027093216/https://c4model.com/"}
+    fpsot: {en: "System context, container and component views, drawn with the C4 macros of the PlantUML standard library. The code level is never drawn by hand.", fr: "Vues de contexte du système, de conteneurs et de composants, dessinées avec les macros C4 de la bibliothèque standard de PlantUML. Le niveau du code n’est jamais dessiné à la main."}
+  - id: DIA-014
+    topic: structure-behavior
+    requirement: {en: "Structure and behavior diagrams follow UML 2.5.1.", fr: "Les diagrammes de structure et de comportement suivent UML 2.5.1."}
+    international: {en: "UML 2.5.1 is the current version of the Object Management Group. The ISO edition of 2012 publishes the earlier version 2.4.1.", fr: "UML 2.5.1 est la version en vigueur de l’Object Management Group. L’édition de l’ISO de 2012 publie la version antérieure 2.4.1."}
+    international_source: {title: "Unified Modeling Language, version 2.5.1", version: "formal/17-12-05", date: "2017-12", url: "https://www.omg.org/spec/UML/2.5.1", archive: "https://web.archive.org/web/20261022232220/https://www.omg.org/spec/UML/2.5.1"}
+    fpsot: {en: "UML 2.5.1, mostly class, sequence, state machine and use case diagrams. No UML symbol with another meaning.", fr: "UML 2.5.1, surtout des diagrammes de classes, de séquence, de machine à états et de cas d’utilisation. Aucun symbole UML avec un autre sens."}
+  - id: DIA-015
+    topic: processes
+    requirement: {en: "Business processes follow BPMN 2.0.2.", fr: "Les processus d’affaires suivent BPMN 2.0.2."}
+    international: {en: "BPMN 2.0.2 defines process diagrams and conformance subclasses. The Descriptive subclass holds the visible elements of high-level models. ISO/IEC 19510:2013 is identical to version 2.0.1.", fr: "BPMN 2.0.2 définit les diagrammes de processus et des sous-classes de conformité. La sous-classe descriptive contient les éléments visibles des modèles de haut niveau. L’ISO/IEC 19510:2013 est identique à la version 2.0.1."}
+    international_source: {title: "Business Process Model and Notation, version 2.0.2", version: "formal/13-12-09", date: "2014-01", url: "https://www.omg.org/spec/BPMN/2.0.2", archive: "https://web.archive.org/web/20261023190255/https://www.omg.org/spec/BPMN/2.0.2/"}
+    fpsot: {en: "Descriptive elements only, drawn as a PlantUML activity diagram with a fixed mapping. The BPMN interchange file is the source of record when a tool uses it.", fr: "Éléments descriptifs seulement, dessinés comme un diagramme d’activités PlantUML selon une correspondance fixe. Le fichier d’échange BPMN est la source de référence quand un outil l’emploie."}
+  - id: DIA-018
+    topic: data-models
+    requirement: {en: "Data model diagrams are generated from the LinkML schema.", fr: "Les diagrammes de modèles de données sont générés à partir du schéma LinkML."}
+    international: {en: "LinkML generators turn one schema into other forms, including PlantUML class diagrams and Mermaid entity-relationship diagrams.", fr: "Les générateurs de LinkML transforment un schéma en d’autres formes, dont des diagrammes de classes PlantUML et des diagrammes entité-association Mermaid."}
+    international_source: {title: "LinkML, Generators", version: "1.12.1", url: "https://linkml.io/linkml/generators/", archive: "https://web.archive.org/web/20261001144734/https://linkml.io/linkml/generators/"}
+    fpsot: {en: "gen-plantuml output, committed and regenerated with each schema change. Never drawn or edited by hand.", fr: "Sortie de gen-plantuml, archivée et régénérée à chaque changement du schéma. Jamais dessinée ni modifiée à la main."}
+  - id: DIA-021
+    topic: text-alternatives
+    requirement: {en: "Each diagram has a short text alternative and a long description.", fr: "Chaque diagramme a un texte de remplacement court et une description longue."}
+    international: {en: "A complex image needs a short alternative that identifies it and a long description that gives the same information, near the image.", fr: "Une image complexe exige un texte court qui la désigne et une description longue qui donne la même information, près de l’image."}
+    international_source: {title: "W3C WAI, Images Tutorial, Complex Images", url: "https://www.w3.org/WAI/tutorials/images/complex/", archive: "https://web.archive.org/web/20261026202620/https://www.w3.org/WAI/tutorials/images/complex/"}
+    fpsot: {en: "Short text in the image macro, then a long description in the page, in the reading order of the notation.", fr: "Texte court dans la macro d’image, puis description longue dans la page, dans l’ordre de lecture de la notation."}
+  - id: DIA-023
+    topic: color
+    requirement: {en: "Color is never the only way to show a meaning.", fr: "La couleur n’est jamais le seul moyen de montrer un sens."}
+    international: {en: "WCAG 2.2 success criterion 1.4.1 forbids color as the only visual means of conveying information.", fr: "Le critère de succès 1.4.1 des WCAG 2.2 interdit la couleur comme seul moyen visuel de transmettre une information."}
+    international_source: {title: "W3C, Understanding Success Criterion 1.4.1: Use of Color (WCAG 2.2)", url: "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html", archive: "https://web.archive.org/web/20261021110603/https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"}
+    fpsot: {en: "Each meaning shown by color also shows as a label, a shape, a line style or a legend entry. Black and white by default.", fr: "Chaque sens montré par une couleur paraît aussi sous forme de libellé, de forme, de style de trait ou d’entrée de légende. Noir et blanc par défaut."}
+  - id: DIA-030
+    topic: output
+    requirement: {en: "Diagrams are published as SVG files committed beside their source.", fr: "Les diagrammes sont publiés en fichiers SVG archivés à côté de leur source."}
+    international: {en: "SVG 1.1 Second Edition is the W3C Recommendation for vector graphics in XML, with real text that scales.", fr: "SVG 1.1, deuxième édition, est la recommandation du W3C pour les graphiques vectoriels en XML, avec du vrai texte qui s’agrandit."}
+    international_source: {title: "Scalable Vector Graphics (SVG) 1.1 (Second Edition)", version: "Recommendation", date: "2011-08-16", url: "https://www.w3.org/TR/SVG11/", archive: "https://web.archive.org/web/20261019073414/https://www.w3.org/TR/SVG11/"}
+    fpsot: {en: "SVG only, rendered by the pinned PlantUML and never edited by hand. No raster-only diagram.", fr: "SVG seulement, rendu par la version fixée de PlantUML et jamais modifié à la main. Aucun diagramme seulement en image matricielle."}

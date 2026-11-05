@@ -1,0 +1,132 @@
+= Notations
+include::_fpsot-terms.adoc[]
+
+These rules set which notation a diagram uses for each purpose.
+A reader who knows the notation then reads every {abbr-fpsot-first} diagram of that kind the same way.
+
+== Choosing a notation
+
+[[DIA-010]]
+*DIA-010.* Each diagram MUST use the notation that the table below gives for its purpose.
+A diagram MUST NOT mix two of these notations.
+A diagram for another purpose, such as a reading path, MAY use plain boxes and arrows with a legend.
+Each notation gives its shapes one meaning, and a mixed diagram would give them two.
+
+[cols="2,2,1",options="header"]
+|===
+|Purpose |Notation |Rules
+|Architecture of software systems |C4 model: system context, container and component |DIA-011 to DIA-013
+|Structure and behavior inside a system |{abbr-uml-first} 2.5.1 |DIA-014
+|Business processes |{abbr-bpmn-first} 2.0.2 |DIA-015 to DIA-017
+|Data models |Diagram generated from the LinkML schema |DIA-018
+|===
+
+== Architecture
+
+[[DIA-011]]
+*DIA-011.* An architecture diagram MUST be one of the views of the link:https://c4model.com/[C4 model]: system context, container or component.
+It MUST use the C4 macros of the PlantUML standard library, such as `Person`, `Container` and `Rel`.
+Authors MUST NOT draw the code level of the C4 model by hand.
+A view of the code comes from the code itself, or from a generated diagram.
+The C4 views zoom in one step at a time, so each reader stops at the level they need.
+
+[[DIA-012]]
+*DIA-012.* Each element of a C4 diagram MUST show its name and a short description of what it does.
+Its type MUST show in the element or in the legend.
+Each container and each component MUST also name its technology.
+Each relationship MUST point one way and carry a label that says what happens, such as "Sends events to".
+A relationship between two containers MUST also name its protocol.
+Each C4 diagram MUST show the legend of the library, with `SHOW_LEGEND()`.
+
+The link:https://c4model.com/diagrams/notation[C4 notation guidance] asks for the same content, so readers learn it once.
+
+[[DIA-013]]
+*DIA-013.* A project MAY add the supporting C4 views: system landscape, dynamic and deployment.
+They MUST follow DIA-012 as well.
+A deployment view shows where each container runs, which a container diagram leaves out.
+
+== Structure and behavior
+
+[[DIA-014]]
+*DIA-014.* A diagram of structure or behavior inside a system MUST follow link:https://www.omg.org/spec/UML/2.5.1[UML 2.5.1] of the Object Management Group.
+It SHOULD be a class, sequence, state machine or use case diagram.
+It MUST NOT give a {abbr-uml} symbol another meaning.
+A hollow triangle, for example, always marks a generalization.
+Version 2.5.1 is the current version, and the 2012 {abbr-iso-first} edition, link:https://www.iso.org/standard/52854.html[ISO/IEC 19505-2], publishes an earlier one.
+Readers trained in {abbr-uml} then read each symbol as the standard defines it.
+
+== Business processes
+
+[[DIA-015]]
+*DIA-015.* A diagram of a business process MUST follow link:https://www.omg.org/spec/BPMN/2.0.2[BPMN 2.0.2] of the Object Management Group.
+It MUST use only the elements of the Descriptive conformance subclass of that standard.
+The 2013 {abbr-iso} edition, link:https://www.iso.org/standard/62652.html[ISO/IEC 19510], is identical to the earlier version 2.0.1.
+The Descriptive subclass holds the elements that people outside the modeling team understand.
+
+[[DIA-016]]
+*DIA-016.* PlantUML has no {abbr-bpmn} notation.
+A process diagram MUST therefore be a link:https://plantuml.com/activity-diagram-beta[PlantUML activity diagram] that maps each element as the table below shows.
+It MUST NOT use an activity element that the table leaves out.
+Its title MUST name it as a process, and its legend MUST give the mapping it uses.
+A process with several pools SHOULD have one diagram per pool.
+
+The activity syntax cannot show the messages between pools.
+The mapping keeps the meaning of {abbr-bpmn} with the tools that the shared workflow already runs.
+
+[cols="1,1",options="header"]
+|===
+|BPMN 2.0.2 element |PlantUML activity syntax
+|Pool |The title of the diagram
+|Lane |Swimlane, `\|Lane name\|`
+|Start event (none) |`start`
+|End event (none) |`stop`
+|Terminate end event |`end`
+|Task, user task, service task |Action, `:Check the claim;`
+|Collapsed subprocess |Action with a stereotype, `:Pay the fee; <<subprocess>>`
+|Exclusive gateway |`if (question?) then (answer)` … `else` … `endif`
+|Parallel gateway |`fork` … `fork again` … `end fork`
+|Sequence flow |The arrow between two steps
+|Text annotation |`note right` … `end note`
+|===
+
+[[DIA-017]]
+*DIA-017.* Some processes go to a {abbr-bpmn} tool or run in an engine.
+Such a process MUST keep its BPMN 2.0.2 interchange file as its source of record.
+That file MUST sit in `diagrams/`, with the `.bpmn` extension.
+Its base name MUST be that of the diagram, without the language ending.
+The PlantUML diagram MUST show the same elements and flows as that file.
+The interchange file is the model, and the diagram is one view of it for readers.
+
+== Data models
+
+[[DIA-018]]
+*DIA-018.* A data model diagram MUST come from its LinkML schema, through the PlantUML generator of link:https://linkml.io/linkml/generators/[LinkML], `gen-plantuml`.
+Authors MUST NOT draw or edit it by hand.
+Authors MUST commit the generated source in `diagrams/`, and regenerate it in the same {term-commit} as each schema change.
+The repository MUST record the command that makes it, such as in a script that the continuous integration runs.
+The generator draws each class with its fields, and each link with its multiplicity, in {abbr-uml} class notation.
+A drawn copy of a schema goes out of date, but a generated one always matches the schema.
+
+== References
+
+=== Normative
+
+* link:https://c4model.com/[The C4 model], Simon Brown, not versioned. link:https://web.archive.org/web/20261027093216/https://c4model.com/[Archived copy]
+* link:https://c4model.com/diagrams/notation[C4 model, Notation], Simon Brown, not versioned. link:https://web.archive.org/web/20261024081510/https://c4model.com/diagrams/notation[Archived copy]
+* link:https://www.omg.org/spec/UML/2.5.1[Unified Modeling Language, version 2.5.1], Object Management Group, formal/17-12-05, 2017-12. link:https://web.archive.org/web/20261022232220/https://www.omg.org/spec/UML/2.5.1[Archived copy]
+* link:https://www.omg.org/spec/BPMN/2.0.2[Business Process Model and Notation, version 2.0.2], Object Management Group, formal/13-12-09, 2014-01. link:https://web.archive.org/web/20261023190255/https://www.omg.org/spec/BPMN/2.0.2/[Archived copy]
+* link:https://plantuml.com/activity-diagram-beta[PlantUML, Activity diagram (new syntax)], PlantUML project, 1.2026.9. link:https://web.archive.org/web/20261026091044/https://plantuml.com/activity-diagram-beta[Archived copy]
+* link:https://linkml.io/linkml/generators/[LinkML, Generators], LinkML project, 1.12.1. link:https://web.archive.org/web/20261001144734/https://linkml.io/linkml/generators/[Archived copy]
+
+=== Informative
+
+* link:https://www.iso.org/standard/52854.html[ISO/IEC 19505-2:2012, Object Management Group Unified Modeling Language, Part 2: Superstructure], ISO/IEC JTC 1, edition 1, 2012-04-20. link:https://web.archive.org/web/20261018002427/https://www.iso.org/standard/52854.html[Archived copy]
+* link:https://www.iso.org/standard/62652.html[ISO/IEC 19510:2013, Object Management Group Business Process Model and Notation], ISO/IEC JTC 1, edition 1, 2013-07-15. link:https://web.archive.org/web/20261009192615/https://www.iso.org/standard/62652.html[Archived copy]
+
+== Document history
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Change
+|0.1.0 |2026-11-05 |First version.
+|===

@@ -1,0 +1,53 @@
+= Diagrammes en deux langues
+include::_fpsot-terms.adoc[]
+
+Chaque page de la {abbr-fpsot-first} existe en anglais et en français, et ses diagrammes font partie de la page.
+Un diagramme garde ses mots sous forme de texte dans son fichier {abbr-svg-first}, et chaque langue a son propre fichier.
+Les personnes qui traduisent travaillent alors sur les libellés des diagrammes comme sur les autres textes.
+
+== Un diagramme par langue
+
+[[DIA-040]]
+*DIA-040.* Chaque diagramme qui contient des mots que les personnes lisent DOIT exister en anglais et en français.
+La page française DOIT insérer le diagramme français.
+Les textes de remplacement de chaque diagramme DOIVENT être dans la langue de sa page.
+Le lectorat francophone reçoit alors la même information que le lectorat anglophone, dans sa langue.
+
+[[DIA-041]]
+*DIA-041.* Les deux sources d'un diagramme DOIVENT partager un nom de base et finir par `-en` et `-fr`.
+Un exemple est `registry-context-en.puml` et `registry-context-fr.puml`.
+La terminaison est la sous-étiquette de langue du diagramme, en minuscules.
+Chaque fichier rendu garde le nom de sa source, comme `registry-context-fr.svg`.
+Les personnes qui révisent voient alors d'un coup d'œil si les deux langues existent.
+
+== Fichiers de libellés
+
+[[DIA-042]]
+*DIA-042.* Quand les deux langues partagent une même disposition, celle-ci DEVRAIT s'écrire une seule fois, dans un fichier nommé `<name>.iuml`.
+Les libellés de chaque langue DEVRAIENT alors aller dans `<name>-labels-en.iuml` et `<name>-labels-fr.iuml`, sous forme de variables PlantUML.
+Chaque source de langue ne contient alors que ses deux lignes `!include` : ses libellés d'abord, puis la disposition.
+Les deux diagrammes ne peuvent pas diverger, et les personnes qui traduisent ne modifient que les fichiers de libellés.
+Le flux de travail des diagrammes rend seulement les fichiers `.puml`, et les fichiers inclus ne produisent donc aucune image.
+
+[[DIA-043]]
+*DIA-043.* Un petit diagramme PEUT plutôt avoir deux sources complètes, une par langue.
+Les deux sources DOIVENT alors montrer les mêmes éléments, les mêmes relations et la même disposition.
+Deux fichiers complets se lisent plus facilement quand un diagramme n'a que quelques libellés.
+
+== Noms que les programmes lisent
+
+[[DIA-044]]
+*DIA-044.* Un nom que les programmes lisent DOIT rester le même dans les deux langues.
+C'est le cas des champs, des chemins et des codes, comme le fixe la spécification sur le nommage.
+Un diagramme qui ne montre que de tels noms DOIT être un seul fichier sans terminaison de langue.
+Un modèle de données généré en est un exemple.
+Les deux pages insèrent alors ce fichier, et chaque page donne les textes de remplacement dans sa langue.
+Un nom de champ traduit ne correspondrait plus aux données.
+
+== Historique du document
+
+[cols="1,1,4",options="header"]
+|===
+|Version |Date |Changement
+|0.1.0 |2026-11-05 |Première version.
+|===
