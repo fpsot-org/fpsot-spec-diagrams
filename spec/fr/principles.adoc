@@ -16,7 +16,7 @@ Un seul langage pour tous les diagrammes permet à chaque personne qui révise d
 [[DIA-002]]
 *DIA-002.* Chaque diagramme DOIT avoir son propre fichier source dans le dossier `diagrams/` à la racine du dépôt, sans sous-dossier.
 Sa ligne `@startuml` DOIT nommer le diagramme avec le nom de base de son fichier, comme `@startuml registry-context-en`.
-Le flux de travail partagé des diagrammes rend chaque fichier `.puml` de ce dossier.
+Le flux de travail partagé des diagrammes produit le rendu de chaque fichier `.puml` de ce dossier.
 La production des pages publie seulement les fichiers rendus de ce dossier, et non ceux de ses sous-dossiers.
 
 [[DIA-003]]
@@ -24,10 +24,11 @@ La production des pages publie seulement les fichiers rendus de ce dossier, et n
 Le premier DOIT donner sa licence sous la forme `SPDX-License-Identifier: Community-Spec-1.0`, ou la licence du dépôt.
 Le second DOIT dire ce que montre le diagramme et nommer la page ou les identifiants d'exigences qu'il illustre.
 Le lectorat connaît alors les conditions de réutilisation et la place du diagramme.
-Une source générée suit plutôt DIA-018.
+Un fichier qu'un générateur écrit, comme le fixe DIA-018, est exempté de DIA-002, DIA-003 et DIA-006.
+La source enveloppe qui l'inclut DOIT respecter ces trois règles.
 
 [[DIA-004]]
-*DIA-004.* Une source DOIT se rendre avec la version de PlantUML que fixe le flux de travail partagé.
+*DIA-004.* Une source DOIT produire son rendu avec la version de PlantUML que fixe le flux de travail partagé.
 Elle DOIT employer la mise en page Smetana de cette version.
 Elle NE DOIT PAS exiger Graphviz ou un autre programme, ni inclure un fichier venant du réseau.
 Elle PEUT inclure la bibliothèque standard de PlantUML, comme `<C4/C4_Container>`, et des fichiers de `diagrams/`.

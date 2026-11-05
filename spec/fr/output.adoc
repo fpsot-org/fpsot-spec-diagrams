@@ -19,7 +19,7 @@ Les pages et les livres se produisent alors sans PlantUML.
 [[DIA-031]]
 *DIA-031.* Une page DOIT insérer chaque diagramme avec une macro d'image et un chemin relatif vers son fichier {abbr-svg}.
 À partir de `spec/fr/`, le chemin est `../../diagrams/` suivi du nom du fichier.
-Une page NE DOIT PAS rendre du PlantUML lors de la production, par exemple avec une extension d'Asciidoctor.
+Une page NE DOIT PAS produire le rendu du PlantUML lors de la production, par exemple avec une extension d'Asciidoctor.
 Elle PEUT montrer une source comme du code, dans un bloc `[source,plantuml]`.
 Les pages {abbr-html-first}, le site et le livre {abbr-pdf-first} montrent alors tous le même fichier archivé.
 
@@ -34,17 +34,18 @@ Une image avec un script pourrait exécuter du code dans le navigateur de la per
 [[DIA-033]]
 *DIA-033.* Les noms des fichiers de diagrammes DOIVENT suivre NAM-070 et NAM-071 de la spécification sur le nommage.
 Ils sont en kebab-case et en anglais, et le fichier {abbr-svg} a le nom de base de sa source.
-Le nom de base DEVRAIT commencer par le sujet et finir par la sorte de vue, selon le tableau ci-dessous.
+Le nom de base DEVRAIT commencer par le sujet et finir par le type de vue, selon le tableau ci-dessous.
+Le tableau couvre le modèle C4, le {abbr-uml-first} et le {abbr-bpmn-first}.
 Un diagramme en deux langues ajoute ensuite sa langue, comme le fixe DIA-041.
-On trouve alors toutes les vues d'un sujet ensemble, et la sorte de chaque diagramme se voit à son nom.
+On trouve alors toutes les vues d'un sujet ensemble, et le type de chaque diagramme se voit à son nom.
 
 [cols="1,2",options="header"]
 |===
-|Terminaison |Sorte de diagramme
+|Terminaison |Type de diagramme
 |`-landscape`, `-context`, `-container`, `-component` |Vues C4
 |`-deployment`, `-dynamic` |Vues C4 complémentaires
-|`-class`, `-sequence`, `-state`, `-use-case` |Diagrammes {abbr-uml-first}
-|`-process` |Processus {abbr-bpmn-first}
+|`-class`, `-sequence`, `-state`, `-use-case` |Diagrammes {abbr-uml}
+|`-process` |Processus {abbr-bpmn}
 |`-model` |Modèle de données généré
 |===
 

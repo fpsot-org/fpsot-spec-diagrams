@@ -25,7 +25,8 @@ The page build publishes the rendered files of that folder only, not of its subf
 The first MUST give its license as `SPDX-License-Identifier: Community-Spec-1.0`, or the license of the repository.
 The second MUST say what the diagram shows, and name the page or the requirement IDs it illustrates.
 Readers then know the terms of reuse and where the diagram belongs.
-A generated source follows DIA-018 instead.
+A file that a generator writes, as DIA-018 sets, is exempt from DIA-002, DIA-003 and DIA-006.
+The wrapper source that includes it MUST meet those three rules.
 
 [[DIA-004]]
 *DIA-004.* A source MUST render with the PlantUML version that the shared diagrams workflow pins, with its Smetana layout.

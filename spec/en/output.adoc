@@ -35,6 +35,7 @@ An image with a script could run code in the reader's browser.
 *DIA-033.* Diagram file names MUST follow NAM-070 and NAM-071 of the naming specification.
 They are in kebab-case and in English, and the {abbr-svg} file has the base name of its source.
 The base name SHOULD start with the subject and end with the kind of view, from the table below.
+The table covers the C4 model, the {abbr-uml-first} and the {abbr-bpmn-first}.
 A diagram in two languages then adds its language, as DIA-041 sets.
 Readers find every view of one subject together, and see the kind of each diagram from its name.
 
@@ -43,8 +44,8 @@ Readers find every view of one subject together, and see the kind of each diagra
 |Ending |Kind of diagram
 |`-landscape`, `-context`, `-container`, `-component` |C4 views
 |`-deployment`, `-dynamic` |Supporting C4 views
-|`-class`, `-sequence`, `-state`, `-use-case` |{abbr-uml-first} diagrams
-|`-process` |{abbr-bpmn-first} process
+|`-class`, `-sequence`, `-state`, `-use-case` |{abbr-uml} diagrams
+|`-process` |{abbr-bpmn} process
 |`-model` |Generated data model
 |===
 

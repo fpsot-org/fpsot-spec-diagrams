@@ -3,6 +3,7 @@ include::_fpsot-terms.adoc[]
 
 Ces règles fixent la notation qu'un diagramme emploie selon son but.
 Une personne qui connaît la notation lit alors de la même façon chaque diagramme de ce type de la {abbr-fpsot-first}.
+Ces notations sont le modèle C4, le {abbr-uml-first} et le {abbr-bpmn-first}.
 
 == Choix de la notation
 
@@ -16,8 +17,8 @@ Chaque notation donne un seul sens à ses formes, et un diagramme mêlé leur en
 |===
 |But |Notation |Règles
 |Architecture des systèmes logiciels |Modèle C4 : contexte du système, conteneurs et composants |DIA-011 à DIA-013
-|Structure et comportement à l'intérieur d'un système |{abbr-uml-first} 2.5.1 |DIA-014
-|Processus d'affaires |{abbr-bpmn-first} 2.0.2 |DIA-015 à DIA-017
+|Structure et comportement à l'intérieur d'un système |{abbr-uml} 2.5.1 |DIA-014
+|Processus d'affaires |{abbr-bpmn} 2.0.2 |DIA-015 à DIA-017
 |Modèles de données |Diagramme généré à partir du schéma LinkML |DIA-018
 |===
 
@@ -82,7 +83,7 @@ La correspondance garde le sens du {abbr-bpmn} avec les outils que le flux de tr
 |Événement de fin (simple) |`stop`
 |Événement de fin avec terminaison |`end`
 |Tâche, tâche utilisateur, tâche de service |Action, `:Vérifier la demande;`
-|Sous-processus réduit |Action avec un stéréotype, `:Payer les frais; <<subprocess>>`
+|Sous-processus réduit |Action avec un libellé visible, `:Payer les frais (sous-processus);`
 |Passerelle exclusive |`if (question?) then (réponse)` … `else` … `endif`
 |Passerelle parallèle |`fork` … `fork again` … `end fork`
 |Flux de séquence |La flèche entre deux étapes
@@ -101,11 +102,18 @@ Le fichier d'échange est le modèle, et le diagramme en est une vue pour le lec
 
 [[DIA-018]]
 *DIA-018.* Un diagramme de modèle de données DOIT venir de son schéma LinkML, par le générateur PlantUML de link:https://linkml.io/linkml/generators/[LinkML], `gen-plantuml`.
-Il NE DOIT PAS être dessiné ni modifié à la main.
-La source générée DOIT être enregistrée dans `diagrams/` et régénérée dans le même {term-commit} que chaque changement du schéma.
-La commande qui la produit DOIT être consignée dans le dépôt, par exemple dans un script que l'intégration continue exécute.
+Le générateur DOIT écrire sur la sortie standard, que la commande envoie dans un fichier `<name>.iuml` de `diagrams/`.
+Son option `-d` NE DOIT PAS être employée, car elle produit le rendu par un serveur en ligne.
+Le fichier généré NE DOIT PAS être dessiné ni modifié à la main.
+Il DOIT être archivé, puis régénéré dans le même {term-commit} que chaque changement du schéma.
+La commande qui le produit DOIT être consignée dans le dépôt, par exemple dans un script que l'intégration continue exécute.
+
+Chaque langue DOIT avoir une petite source enveloppe, comme `<name>-fr.puml`, qui inclut le fichier généré.
+L'enveloppe DOIT porter le nom `@startuml`, le titre et la légende, comme l'exigent DIA-002 et DIA-006.
+Le flux de travail partagé des diagrammes produit alors le rendu de chaque enveloppe avec la version fixe de PlantUML.
 Le générateur dessine chaque classe avec ses champs, et chaque lien avec sa multiplicité, en notation de classes {abbr-uml}.
 Une copie dessinée d'un schéma vieillit, mais une copie générée correspond toujours au schéma.
+Un serveur en ligne pourrait aussi changer l'image, ou recevoir un schéma qui n'est pas encore public.
 
 == Références
 

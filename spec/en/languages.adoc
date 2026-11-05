@@ -5,6 +5,12 @@ Every {abbr-fpsot-first} page exists in English and in French, and its diagrams 
 A diagram keeps its words as text in its {abbr-svg-first} file, and each language has its own file.
 Translators can then work on diagram labels as they work on other text.
 
+A diagram is a picture with significant other visual content, such as shapes and lines.
+Under the definition of link:https://www.w3.org/TR/WCAG22/[WCAG 2.2], it is therefore not an image of text.
+Still, the {abbr-fpsot} internationalization specification keeps the text that people read out of images.
+Real {abbr-svg} text, one file per language and label files meet the purpose of that rule.
+The {abbr-fpsot} accessibility specification sets the rules on images of text and text alternatives.
+
 == One diagram per language
 
 [[DIA-040]]
@@ -40,9 +46,15 @@ Two complete files are simpler to read when a diagram has only a few labels.
 *DIA-044.* A name that programs read MUST stay the same in both languages.
 Fields, paths and codes are such names, as the naming specification sets.
 A diagram that shows only such names MUST be one file with no language ending.
-A generated data model is an example.
+An example is the generated file of a data model, which each language wrapper of DIA-018 includes.
 Both pages then embed that file, and each page gives the text alternatives in its own language.
 A translated field name would no longer match the data.
+
+== References
+
+=== Informative
+
+* link:https://www.w3.org/TR/WCAG22/[Web Content Accessibility Guidelines (WCAG) 2.2], W3C, W3C Recommendation, 2024-12-12. link:https://web.archive.org/web/20261103005900/https://www.w3.org/TR/WCAG22/[Archived copy]
 
 == Document history
 

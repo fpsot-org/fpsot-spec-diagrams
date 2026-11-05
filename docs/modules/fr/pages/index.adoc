@@ -142,13 +142,16 @@ La passerelle « Complète? » devient une question, avec une sous-liste pour «
 
 Ne dessinez jamais un modèle de données à la main, comme le fixe DIA-018.
 Générez-le à partir du schéma LinkML et archivez le résultat dans le même {term-commit} que le changement du schéma.
+Envoyez la sortie dans un fichier `.iuml`.
+N'employez jamais l'option `-d`, qui produit le rendu par un serveur en ligne.
 
 [source,shell]
 ----
-gen-plantuml model/jurisdiction.yaml > diagrams/jurisdiction-model.puml
+gen-plantuml model/jurisdiction.yaml > diagrams/jurisdiction-model.iuml
 ----
 
 Le générateur écrit un diagramme de classes {abbr-uml}, comme cet extrait.
+Ne modifiez jamais ce fichier à la main.
 
 [source,plantuml]
 ----
@@ -161,12 +164,32 @@ class "Source" {
 "ComparisonRow" *--> "1" "Source" : "source"
 ----
 
+Écrivez ensuite une petite source enveloppe pour chaque langue, comme le demande DIA-018.
+Elle donne le nom, le titre et la légende, et inclut le fichier généré.
+Le flux de travail partagé produit le rendu de l'enveloppe avec la version fixe de PlantUML.
+
+[source,plantuml]
+----
+@startuml jurisdiction-model-fr
+' SPDX-License-Identifier: Community-Spec-1.0
+' Modèle de données des fichiers de juridictions, généré à partir de model/jurisdiction.yaml (DIA-018).
+skinparam monochrome true
+title Diagramme de classes du modèle de données des juridictions
+!include jurisdiction-model.iuml
+legend right
+  Généré à partir de model/jurisdiction.yaml avec gen-plantuml
+endlegend
+@enduml
+----
+
 Le diagramme montre des noms de champs, qui restent en anglais dans les deux langues.
-Gardez un seul fichier sans terminaison de langue, comme le fixe DIA-044, et rédigez sa description longue sur chaque page.
+Gardez un seul fichier généré sans terminaison de langue, comme le fixe DIA-044.
+Rédigez sa description longue sur chaque page.
 
-== Rendre et archiver
+== Produire le rendu et archiver
 
-Le flux de travail partagé rend chaque fichier `.puml` avec une version fixe de PlantUML, en mise en page Smetana.
+Le flux de travail partagé produit le rendu de chaque fichier `.puml` avec une version fixe de PlantUML.
+Il emploie la mise en page Smetana.
 Pour faire le rendu sur votre poste, employez la même version.
 
 [source,shell]

@@ -12,27 +12,29 @@ Elles indiquent aussi comment un diagramme respecte les règles sur la couleur.
 
 [[DIA-020]]
 *DIA-020.* Chaque diagramme inséré DOIT avoir un texte de remplacement court dans sa macro d'image.
-Ce texte DOIT nommer la sorte de diagramme et son sujet, puis donner son idée principale en une phrase.
+Ce texte DOIT nommer le type de diagramme et son sujet, puis donner son idée principale en une phrase.
 Le texte « Diagramme de contexte du registre : le personnel y inscrit les biens » en est un exemple.
 Il NE DOIT PAS répéter le nom du fichier ni commencer par « Image de ».
 Un lecteur d'écran annonce d'abord l'image, et le texte court indique s'il vaut la peine de poursuivre.
 
 [[DIA-021]]
 *DIA-021.* Chaque diagramme DOIT aussi avoir une description longue dans le texte de sa page, juste après l'image.
-La description longue DOIT donner les mêmes faits que le diagramme, et rien de ce qui lui manque.
+La description longue DOIT donner les mêmes faits que le diagramme, et aucun fait absent du diagramme.
 Elle DOIT nommer chaque élément, chaque relation avec son sens et son libellé, et chaque groupe ou frontière.
 Elle DOIT suivre l'ordre de lecture de sa notation, comme le montre le tableau ci-dessous.
 Un diagramme que le texte juste avant décrit déjà en entier PEUT renvoyer à ce texte.
 Le link:https://www.w3.org/WAI/tutorials/images/complex/[tutoriel du W3C sur les images complexes] conseille la même division entre un texte court et un texte long.
 
+Le tableau ci-dessous donne l'ordre pour le modèle C4, le {abbr-uml-first} et le {abbr-bpmn-first}.
+
 [cols="1,3",options="header"]
 |===
 |Notation |Description longue
 |Vue C4 |Une liste des éléments, groupés par frontière, chacun avec son type, sa technologie et sa description, puis une liste des relations, comme « Registre vers fournisseur d'identité : vérifie la connexion avec, OpenID Connect ».
-|Diagramme de classes {abbr-uml-first} |Un tableau des classes, avec leurs attributs, puis une liste des associations avec leur multiplicité.
+|Diagramme de classes {abbr-uml} |Un tableau des classes, avec leurs attributs, puis une liste des associations avec leur multiplicité.
 |Diagramme de séquence {abbr-uml} |Une liste numérotée des messages, dans l'ordre du temps, chacun avec son expéditeur et son destinataire.
 |Machine à états {abbr-uml} |Un tableau d'une ligne par transition : l'état, l'événement, la condition et l'état suivant.
-|Processus {abbr-bpmn-first} |Une liste numérotée des étapes, chacune avec son couloir. Chaque passerelle devient une question, avec une sous-liste pour chaque réponse.
+|Processus {abbr-bpmn} |Une liste numérotée des étapes, chacune avec son couloir. Chaque passerelle devient une question, avec une sous-liste pour chaque réponse.
 |Modèle de données généré |Un tableau des classes et de leurs champs, puis une liste des liens avec leur multiplicité.
 |===
 

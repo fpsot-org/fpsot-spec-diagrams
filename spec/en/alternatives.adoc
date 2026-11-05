@@ -23,14 +23,16 @@ It MUST follow the reading order of its notation, as the table below shows.
 A diagram that the text right before it already describes in full MAY point to that text instead.
 The link:https://www.w3.org/WAI/tutorials/images/complex/[W3C tutorial on complex images] advises the same split between a short and a long text.
 
+The table below gives the order for the C4 model, the {abbr-uml-first} and the {abbr-bpmn-first}.
+
 [cols="1,3",options="header"]
 |===
 |Notation |Long description
 |C4 view |A list of the elements, grouped by boundary, each with its type, technology and description, then a list of the relationships, such as "Registry to identity provider: checks sign-in with, OpenID Connect".
-|{abbr-uml-first} class diagram |A table of the classes, with their attributes, then a list of the associations with their multiplicity.
+|{abbr-uml} class diagram |A table of the classes, with their attributes, then a list of the associations with their multiplicity.
 |{abbr-uml} sequence diagram |A numbered list of the messages, in time order, each with its sender and receiver.
 |{abbr-uml} state machine |A table with one row per transition: the state, the event, the condition and the next state.
-|{abbr-bpmn-first} process |A numbered list of the steps, each with its lane. Each gateway becomes a question, with a sub-list for each answer.
+|{abbr-bpmn} process |A numbered list of the steps, each with its lane. Each gateway becomes a question, with a sub-list for each answer.
 |Generated data model |A table of the classes and their fields, then a list of the links with their multiplicity.
 |===
 

@@ -3,6 +3,7 @@ include::_fpsot-terms.adoc[]
 
 These rules set which notation a diagram uses for each purpose.
 A reader who knows the notation then reads every {abbr-fpsot-first} diagram of that kind the same way.
+The notations are the C4 model, the {abbr-uml-first} and the {abbr-bpmn-first}.
 
 == Choosing a notation
 
@@ -16,8 +17,8 @@ Each notation gives its shapes one meaning, and a mixed diagram would give them 
 |===
 |Purpose |Notation |Rules
 |Architecture of software systems |C4 model: system context, container and component |DIA-011 to DIA-013
-|Structure and behavior inside a system |{abbr-uml-first} 2.5.1 |DIA-014
-|Business processes |{abbr-bpmn-first} 2.0.2 |DIA-015 to DIA-017
+|Structure and behavior inside a system |{abbr-uml} 2.5.1 |DIA-014
+|Business processes |{abbr-bpmn} 2.0.2 |DIA-015 to DIA-017
 |Data models |Diagram generated from the LinkML schema |DIA-018
 |===
 
@@ -82,7 +83,7 @@ The mapping keeps the meaning of {abbr-bpmn} with the tools that the shared work
 |End event (none) |`stop`
 |Terminate end event |`end`
 |Task, user task, service task |Action, `:Check the claim;`
-|Collapsed subprocess |Action with a stereotype, `:Pay the fee; <<subprocess>>`
+|Collapsed sub-process |Action with a visible label, `:Pay the fee (sub-process);`
 |Exclusive gateway |`if (question?) then (answer)` … `else` … `endif`
 |Parallel gateway |`fork` … `fork again` … `end fork`
 |Sequence flow |The arrow between two steps
@@ -101,11 +102,18 @@ The interchange file is the model, and the diagram is one view of it for readers
 
 [[DIA-018]]
 *DIA-018.* A data model diagram MUST come from its LinkML schema, through the PlantUML generator of link:https://linkml.io/linkml/generators/[LinkML], `gen-plantuml`.
-Authors MUST NOT draw or edit it by hand.
-Authors MUST commit the generated source in `diagrams/`, and regenerate it in the same {term-commit} as each schema change.
+The generator MUST write to standard output, which the command sends to a `<name>.iuml` file in `diagrams/`.
+Authors MUST NOT use its `-d` option, which renders the diagram through an online server.
+Authors MUST NOT draw the generated file or edit it by hand.
+They MUST commit it, and regenerate it in the same {term-commit} as each schema change.
 The repository MUST record the command that makes it, such as in a script that the continuous integration runs.
+
+Each language MUST have a small wrapper source, such as `<name>-en.puml`, that includes the generated file.
+The wrapper MUST carry the `@startuml` name, the title and the legend, as DIA-002 and DIA-006 require.
+The shared diagrams workflow then renders each wrapper with the pinned PlantUML.
 The generator draws each class with its fields, and each link with its multiplicity, in {abbr-uml} class notation.
 A drawn copy of a schema goes out of date, but a generated one always matches the schema.
+An online server could also change the image, or receive a schema that is not yet public.
 
 == References
 

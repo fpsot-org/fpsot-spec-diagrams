@@ -141,13 +141,15 @@ The gateway "Complete?" becomes a question with one sub-list for "yes" and one f
 
 Never draw a data model by hand, as DIA-018 sets.
 Generate it from the LinkML schema, and commit the result in the same {term-commit} as the schema change.
+Send the output to a `.iuml` file, and never use the `-d` option, which renders through an online server.
 
 [source,shell]
 ----
-gen-plantuml model/jurisdiction.yaml > diagrams/jurisdiction-model.puml
+gen-plantuml model/jurisdiction.yaml > diagrams/jurisdiction-model.iuml
 ----
 
 The generator writes a {abbr-uml} class diagram, such as this excerpt.
+Never edit this file by hand.
 
 [source,plantuml]
 ----
@@ -160,8 +162,26 @@ class "Source" {
 "ComparisonRow" *--> "1" "Source" : "source"
 ----
 
+Then write a small wrapper source for each language, as DIA-018 asks.
+It gives the name, the title and the legend, and includes the generated file.
+The shared workflow renders the wrapper with the pinned PlantUML.
+
+[source,plantuml]
+----
+@startuml jurisdiction-model-en
+' SPDX-License-Identifier: Community-Spec-1.0
+' Data model of the jurisdiction files, generated from model/jurisdiction.yaml (DIA-018).
+skinparam monochrome true
+title Class diagram of the jurisdiction data model
+!include jurisdiction-model.iuml
+legend right
+  Generated from model/jurisdiction.yaml with gen-plantuml
+endlegend
+@enduml
+----
+
 The diagram shows field names, which stay in English in both languages.
-Keep one file with no language ending, as DIA-044 sets, and write its long description on each page.
+Keep one generated file with no language ending, as DIA-044 sets, and write its long description on each page.
 
 == Render and commit
 
